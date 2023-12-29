@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'home_page_model.dart';
@@ -98,40 +96,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          child: FlutterFlowExpandedImageView(
-                            image: Image.asset(
-                              'assets/images/GNFA-goodnewsforall-radionetwork.png',
-                              fit: BoxFit.contain,
-                            ),
-                            allowRotation: false,
-                            useHeroAnimation: false,
-                          ),
-                        ),
-                      );
-                    },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(40.0),
-                        bottomRight: Radius.circular(40.0),
-                        topLeft: Radius.circular(40.0),
-                        topRight: Radius.circular(40.0),
-                      ),
-                      child: Image.asset(
-                        'assets/images/GNFA-goodnewsforall-radionetwork.png',
-                        width: double.infinity,
-                        height: 380.0,
-                        fit: BoxFit.fill,
-                      ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(40.0),
+                      bottomRight: Radius.circular(40.0),
+                      topLeft: Radius.circular(40.0),
+                      topRight: Radius.circular(40.0),
+                    ),
+                    child: Image.asset(
+                      'assets/images/GNFA-goodnewsforall-radionetwork.png',
+                      width: double.infinity,
+                      height: 380.0,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
@@ -142,8 +118,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                   child: FlutterFlowWebView(
                     content:
-                        '<iframe src=\"https://lefi-gnfa.com/public/gnfa/embed?theme=light\" frameborder=\"0\" allowtransparency=\"true\" style=\"width: 100%; min-height: 100px; border: 0;\"></iframe>',
-                    height: 175.0,
+                        '<iframe src=\"https://lefi-gnfa.com/public/gnfa/embed?theme=light\" frameborder=\"0\" allowtransparency=\"true\" style=\"width: 100%; min-height: 250px; border: 0;\"></iframe>',
+                    height: 330.0,
                     verticalScroll: false,
                     horizontalScroll: false,
                     html: true,
