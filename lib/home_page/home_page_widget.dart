@@ -63,59 +63,49 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(1.0, 0.0),
-                child: Builder(
-                  builder: (context) => Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 20.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await Share.share(
-                          'https://lefi.org',
-                          sharePositionOrigin: getWidgetBoundingBox(context),
-                        );
-                      },
-                      child: Icon(
-                        Icons.ios_share_sharp,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 40.0,
+          body: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(1.0, 0.0),
+                  child: Builder(
+                    builder: (context) => Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 20.0, 0.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          await Share.share(
+                            'Listen to Good News For ALL Radio Network : https://lefi.org/gnfa.html',
+                            sharePositionOrigin: getWidgetBoundingBox(context),
+                          );
+                        },
+                        child: Icon(
+                          Icons.ios_share_sharp,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 40.0,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                Expanded(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(40.0),
-                      bottomRight: Radius.circular(40.0),
-                      topLeft: Radius.circular(40.0),
-                      topRight: Radius.circular(40.0),
-                    ),
+                    borderRadius: BorderRadius.circular(0.0),
                     child: Image.asset(
-                      'assets/images/GNFA-goodnewsforall-radionetwork.png',
+                      'assets/images/GNFA_No_border.png',
                       width: double.infinity,
                       height: 380.0,
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                Expanded(
                   child: FlutterFlowWebView(
                     content:
                         '<iframe src=\"https://lefi-gnfa.com/public/gnfa/embed?theme=light\" frameborder=\"0\" allowtransparency=\"true\" style=\"width: 100%; min-height: 250px; border: 0;\"></iframe>',
@@ -125,8 +115,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     html: true,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

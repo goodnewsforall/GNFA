@@ -39,10 +39,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Color(0xFFA0C7EF),
+                color: Colors.transparent,
                 child: Image.asset(
-                  'assets/images/lefi.png',
-                  fit: BoxFit.contain,
+                  'assets/images/GNFA_Transperent.jpg',
+                  fit: BoxFit.fill,
                 ),
               ),
             )
@@ -54,10 +54,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: Color(0xFFA0C7EF),
+                    color: Colors.transparent,
                     child: Image.asset(
-                      'assets/images/lefi.png',
-                      fit: BoxFit.contain,
+                      'assets/images/GNFA_Transperent.jpg',
+                      fit: BoxFit.fill,
                     ),
                   ),
                 )
