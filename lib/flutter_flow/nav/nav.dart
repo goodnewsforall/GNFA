@@ -41,7 +41,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context) => Container(
                 color: Colors.transparent,
                 child: Image.asset(
-                  'assets/images/GNFA_Transperent.jpg',
+                  'assets/images/Welcome_to_Good_News_For_All.png',
                   fit: BoxFit.fill,
                 ),
               ),
@@ -56,7 +56,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   builder: (context) => Container(
                     color: Colors.transparent,
                     child: Image.asset(
-                      'assets/images/GNFA_Transperent.jpg',
+                      'assets/images/Welcome_to_Good_News_For_All.png',
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -71,6 +71,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {

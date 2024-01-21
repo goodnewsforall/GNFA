@@ -4,9 +4,11 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-permission android:name="ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="READ_MEDIA_VISUAL_USER_SELECTED"/>
+    <uses-permission android:name="WakeLock"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="READ_MEDIA_VISUAL_USER_SELECTED"/>
+    <uses-permission android:name="RECORD_AUDIO"/>
     <application
         android:label="GNFA"
         tools:replace="android:label"
