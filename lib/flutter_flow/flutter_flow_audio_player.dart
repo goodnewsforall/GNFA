@@ -115,6 +115,17 @@ class _FlutterFlowAudioPlayerState extends State<FlutterFlowAudioPlayer>
     }
   }
 
+   Future<void> _pauseAndClearBuffer() async {
+    // Pause the audio and clear the buffer
+    await _assetsAudioPlayer?.pause();
+    await _assetsAudioPlayer?.stop();
+  }
+
+  void _resumePlayback() {
+    // Resume playback from where it was paused
+    _assetsAudioPlayer?.play();
+  }
+
   Duration currentPosition(RealtimePlayingInfos infos) =>
       infos.currentPosition.ensureFinite;
   Duration duration(RealtimePlayingInfos infos) => infos.duration.ensureFinite;
