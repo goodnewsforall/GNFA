@@ -122,7 +122,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               child: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsets.all(4.0),
+                  padding: EdgeInsets.all(3.0),
                   child: FlutterFlowAudioPlayer(
                     audio: Audio.network(
                       'https://lefi-gnfa.com:8000/radio.mp3',
