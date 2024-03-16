@@ -22,18 +22,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
-	<array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <!--FF_REVERSED_CLIENT_ID-->
-                
-            </array>
-        </dict>
-
-        <dict>
+	<array>        <dict>
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
@@ -58,8 +47,6 @@
     <string>Allow GNFA to access your Location</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
     <string>This app requires read and write permission from the user</string>
-	<key>UIBackgroundModes</key>
-    <string>audio</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>This is streaming app</string>
 	<key>NSMicrophoneUsageDescription</key>
