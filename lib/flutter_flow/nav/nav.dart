@@ -39,14 +39,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Colors.transparent,
+                color: Colors.white,
                 child: Image.asset(
-                  'assets/images/Welcome_to_Good_News_For_All.png',
-                  fit: BoxFit.fill,
+                  'assets/images/New_Image.png',
+                  fit: BoxFit.contain,
                 ),
               ),
             )
-          : HomePageWidget(),
+          : NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -54,19 +54,33 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: Colors.transparent,
+                    color: Colors.white,
                     child: Image.asset(
-                      'assets/images/Welcome_to_Good_News_For_All.png',
-                      fit: BoxFit.fill,
+                      'assets/images/New_Image.png',
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
-              : HomePageWidget(),
+              : NavBarPage(),
           routes: [
             FFRoute(
               name: 'HomePage',
               path: 'homePage',
-              builder: (context, params) => HomePageWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'HomePage')
+                  : HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'settings',
+              path: 'settings',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'settings')
+                  : SettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Privacypolicy',
+              path: 'privacypolicy',
+              builder: (context, params) => PrivacypolicyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -99,7 +113,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -244,7 +258,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

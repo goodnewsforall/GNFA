@@ -48,7 +48,10 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
             BoxShadow(
               blurRadius: 8.0,
               color: Color(0x230F1113),
-              offset: Offset(0.0, 4.0),
+              offset: Offset(
+                0.0,
+                4.0,
+              ),
             )
           ],
           borderRadius: BorderRadius.circular(12.0),
@@ -95,6 +98,7 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
                             .override(
                               fontFamily: 'Outfit',
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                             ),
                       ),
                       Padding(
@@ -138,6 +142,7 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
                               fontFamily: 'Outfit',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ),
