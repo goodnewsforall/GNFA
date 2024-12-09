@@ -8,30 +8,41 @@ import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'home_page_copy_model.dart';
+export 'home_page_copy_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class HomePageCopyWidget extends StatefulWidget {
+  const HomePageCopyWidget({super.key});
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<HomePageCopyWidget> createState() => _HomePageCopyWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
-  late HomePageModel _model;
+class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
+  late HomePageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => HomePageCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       // lockscreen
       await actions.lockOrientation();
+
+      context.goNamed(
+        'HomePage',
+        extra: <String, dynamic>{
+          kTransitionInfoKey: TransitionInfo(
+            hasTransition: true,
+            transitionType: PageTransitionType.fade,
+            duration: Duration(milliseconds: 0),
+          ),
+        },
+      );
     });
   }
 
@@ -122,12 +133,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               child: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsets.all(24.0),
+                  padding: EdgeInsets.all(4.0),
                   child: FlutterFlowAudioPlayer(
                     audio: Audio.network(
                       'https://lefi-gnfa.com:8000/radio.mp3',
                       metas: Metas(
-                        id: 'radio.mp3-a3e52b53',
+                        id: 'radio.mp3-ddacb418',
                         title: 'Live Broadcast',
                       ),
                     ),
@@ -135,7 +146,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         FlutterFlowTheme.of(context).titleLarge.override(
                               fontFamily: 'Outfit',
                               color: FlutterFlowTheme.of(context).black600,
-                              fontSize: 22.0,
                               letterSpacing: 0.0,
                               lineHeight: 0.0,
                             ),
@@ -213,7 +223,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 await Share.share(
-                                  'https://apps.apple.com/us/app/gnfa/id6475615488',
+                                  'Andriod: https://play.google.com/store/apps/details?id=com.gnfa.radio  ios: https://apple.co/3X785Hc',
                                   sharePositionOrigin:
                                       getWidgetBoundingBox(context),
                                 );

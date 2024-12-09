@@ -120,6 +120,55 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(),
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('ProgramSchedule');
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Program Schedule',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('ProgramSchedule');
+                                },
+                                child: Icon(
+                                  Icons.chevron_right_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Spacer(),
@@ -136,7 +185,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
                 child: Text(
-                  'v0.0.2',
+                  'v1.1.2',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Outfit',
                         letterSpacing: 0.0,
