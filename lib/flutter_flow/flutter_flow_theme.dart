@@ -192,106 +192,91 @@ class ThemeTypography extends Typography {
   final FlutterFlowTheme theme;
 
   String get displayLargeFamily => 'Outfit';
-  TextStyle get displayLarge => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get displayLarge => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
       );
   String get displayMediumFamily => 'Outfit';
-  TextStyle get displayMedium => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get displayMedium => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
   String get displaySmallFamily => 'Outfit';
-  TextStyle get displaySmall => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get displaySmall => GoogleFonts.outfit(
         color: Colors.white,
         fontWeight: FontWeight.w500,
         fontSize: 34.0,
       );
   String get headlineLargeFamily => 'Outfit';
-  TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get headlineLarge => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
   String get headlineMediumFamily => 'Outfit';
-  TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get headlineMedium => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
       );
   String get headlineSmallFamily => 'Outfit';
-  TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get headlineSmall => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 20.0,
       );
   String get titleLargeFamily => 'Outfit';
-  TextStyle get titleLarge => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get titleLarge => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
   String get titleMediumFamily => 'Outfit';
-  TextStyle get titleMedium => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get titleMedium => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
       );
   String get titleSmallFamily => 'Outfit';
-  TextStyle get titleSmall => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get titleSmall => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
   String get labelLargeFamily => 'Outfit';
-  TextStyle get labelLarge => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get labelLarge => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
   String get labelMediumFamily => 'Outfit';
-  TextStyle get labelMedium => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get labelMedium => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
   String get labelSmallFamily => 'Outfit';
-  TextStyle get labelSmall => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get labelSmall => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
   String get bodyLargeFamily => 'Outfit';
-  TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get bodyLarge => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
   String get bodyMediumFamily => 'Outfit';
-  TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get bodyMedium => GoogleFonts.outfit(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
   String get bodySmallFamily => 'Outfit';
-  TextStyle get bodySmall => GoogleFonts.getFont(
-        'Outfit',
+  TextStyle get bodySmall => GoogleFonts.outfit(
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
@@ -300,38 +285,45 @@ class ThemeTypography extends Typography {
 
 extension TextStyleHelper on TextStyle {
   TextStyle override({
+    TextStyle? font,
     String? fontFamily,
     Color? color,
     double? fontSize,
     FontWeight? fontWeight,
     double? letterSpacing,
     FontStyle? fontStyle,
-    bool useGoogleFonts = true,
+    bool useGoogleFonts = false,
     TextDecoration? decoration,
     double? lineHeight,
     List<Shadow>? shadows,
-  }) =>
-      useGoogleFonts
-          ? GoogleFonts.getFont(
-              fontFamily!,
-              color: color ?? this.color,
-              fontSize: fontSize ?? this.fontSize,
-              letterSpacing: letterSpacing ?? this.letterSpacing,
-              fontWeight: fontWeight ?? this.fontWeight,
-              fontStyle: fontStyle ?? this.fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-              shadows: shadows,
-            )
-          : copyWith(
-              fontFamily: fontFamily,
-              color: color,
-              fontSize: fontSize,
-              letterSpacing: letterSpacing,
-              fontWeight: fontWeight,
-              fontStyle: fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-              shadows: shadows,
-            );
+  }) {
+    if (useGoogleFonts && fontFamily != null) {
+      font = GoogleFonts.getFont(fontFamily,
+          fontWeight: fontWeight ?? this.fontWeight,
+          fontStyle: fontStyle ?? this.fontStyle);
+    }
+
+    return font != null
+        ? font.copyWith(
+            color: color ?? this.color,
+            fontSize: fontSize ?? this.fontSize,
+            letterSpacing: letterSpacing ?? this.letterSpacing,
+            fontWeight: fontWeight ?? this.fontWeight,
+            fontStyle: fontStyle ?? this.fontStyle,
+            decoration: decoration,
+            height: lineHeight,
+            shadows: shadows,
+          )
+        : copyWith(
+            fontFamily: fontFamily,
+            color: color,
+            fontSize: fontSize,
+            letterSpacing: letterSpacing,
+            fontWeight: fontWeight,
+            fontStyle: fontStyle,
+            decoration: decoration,
+            height: lineHeight,
+            shadows: shadows,
+          );
+  }
 }

@@ -10,7 +10,6 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
-import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/lat_lng.dart';
@@ -18,10 +17,14 @@ import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
 
+import '/index.dart';
+
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
@@ -80,50 +83,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : HomePageCopyWidget(),
+      navigatorKey: appNavigatorKey,
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? HomepageNewWidget()
+          : HomePageCopyWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : HomePageCopyWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? HomepageNewWidget()
+              : HomePageCopyWidget(),
           routes: [
             FFRoute(
-              name: 'HomePage',
-              path: 'homePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'HomePage')
-                  : HomePageWidget(),
+              name: HomePageWidget.routeName,
+              path: HomePageWidget.routePath,
+              builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'settings',
-              path: 'settings',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'settings')
-                  : SettingsWidget(),
-            ),
-            FFRoute(
-              name: 'Privacypolicy',
-              path: 'privacypolicy',
-              builder: (context, params) => PrivacypolicyWidget(),
-            ),
-            FFRoute(
-              name: 'HomePageCopy',
-              path: 'homePageCopy',
+              name: HomePageCopyWidget.routeName,
+              path: HomePageCopyWidget.routePath,
               builder: (context, params) => HomePageCopyWidget(),
             ),
             FFRoute(
-              name: 'Notifications',
-              path: 'notifications',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Notifications')
-                  : NotificationsWidget(),
-            ),
-            FFRoute(
-              name: 'ProgramSchedule',
-              path: 'programSchedule',
-              builder: (context, params) => ProgramScheduleWidget(),
+              name: HomepageNewWidget.routeName,
+              path: HomepageNewWidget.routePath,
+              builder: (context, params) => HomepageNewWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
